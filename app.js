@@ -1,5 +1,6 @@
 var rssToJson = require('rss-to-json');
 var idGen = require('uuid/v4');
+var dateFormat = require('dateformat');
 var fs = require('fs');
 
 function generateJson(rss) {
@@ -7,9 +8,10 @@ function generateJson(rss) {
     rss = rss.items;
 
     for (i = 0; i < rss.length; i++) {
+        var now = new Date();
         var feedObj = {
             "uid": idGen(),
-            "updateDate": new Date().toString(),
+            "updateDate": dateFormat(now, "isoDateTime"),
             "titleText": rss[i].title,
             "mainText": rss[i].description,
             "redirectionUrl": rss[i].link
