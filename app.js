@@ -9,7 +9,7 @@ function generateJson(rss) {
     for (i = 0; i < rss.length; i++) {
         var feedObj = {
             "uid": idGen(),
-            "updateDate": Date.now().toString(),
+            "updateDate": new Date().toString(),
             "titleText": rss[i].title,
             "mainText": rss[i].description,
             "redirectionUrl": rss[i].link
